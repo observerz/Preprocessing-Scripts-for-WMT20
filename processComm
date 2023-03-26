@@ -1,0 +1,15 @@
+enSet = set()
+deSet = set()
+file_write_en = open('/data1/mzlv/csaData/commcrawl.de-en.en','w')
+file_write_de = open('/data1/mzlv/csaData/commcrawl.de-en.de','w')
+for en,de in zip(open('/data1/mzlv/csaData/processComplete/Original_train_datas/commoncrawl.de-en.en'),open('/data1/mzlv/csaData/processComplete/Original_train_datas/commoncrawl.de-en.de')):
+    
+    if len(en.split(' ')) > 80 or len(de.split(' ')) > 80:
+        continue
+    if en in enSet or de in deSet:
+        continue
+    enSet.add(en)
+    deSet.add(de)
+
+    file_write_en.writelines(en)
+    file_write_de.writelines(de)
